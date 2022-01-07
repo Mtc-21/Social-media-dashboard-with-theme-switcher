@@ -5,13 +5,11 @@ const btn = document.querySelector(".changeTheme");
     const cards_follow = document.querySelectorAll(".card-follow")
     let mode = "Dark Mode";
 
+    removeCard();
+    
     // change theme
     btn.addEventListener("input", (e) => {
-      [cards_overview, cards_follow].forEach(cards => {
-        cards.forEach((card, i) => {
-          card.classList.remove("visible")
-        });
-      });
+    removeCard();
       body.classList.toggle("light") ? mode = "Light Mode" : mode = "Dark Mode"
       theme.textContent = mode;
       setTimeout(showCard, 200);
@@ -28,6 +26,13 @@ const btn = document.querySelector(".changeTheme");
           setTimeout(() => {
             card.classList.add("visible")
           }, i * 100);
+        });
+      });
+    }
+    function removeCard() {
+        [cards_overview, cards_follow].forEach(cards => {
+        cards.forEach((card, i) => {
+          card.classList.remove("visible")
         });
       });
     }
